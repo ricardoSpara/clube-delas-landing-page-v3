@@ -1,0 +1,20 @@
+# Clube Delas Promo
+
+> Comunidade gratuita de curadoria de promoções, cupons e achadinhos para o público feminino, com conteúdo enviado pelo WhatsApp e Telegram.
+
+## Sobre
+
+O Clube Delas Promo seleciona oportunidades de moda, beleza, maquiagem, skincare, acessórios, casa e autocuidado. A comunidade tem mais de 80 mil pessoas. A entrada é gratuita e a pessoa pode sair quando quiser.
+
+Os sorteios mensais, as lives, as regras de participação e a divulgação de ganhadoras acontecem dentro dos grupos oficiais. A landing page apenas apresenta a comunidade e redireciona para esses grupos; ela não realiza sorteios nem vende produtos.
+
+## Links oficiais
+
+- [Página inicial](https://clubedelaspromo-landing-page.vercel.app/)
+- [Telegram](https://t.me/+JslsL6UzXv43OGYx)
+
+## Informações importantes
+
+- O Clube Delas Promo não é uma loja.
+- Preços, estoques, cupons e condições são definidos pelas lojas anunciantes e podem mudar rapidamente.
+- Não existe compra obrigatória para entrar na comunidade.

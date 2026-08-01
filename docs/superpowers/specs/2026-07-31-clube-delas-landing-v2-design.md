@@ -802,14 +802,13 @@ Twitter/X:
 
 ### 17.1 Stack da implementação de referência
 
-- React 19;
-- TypeScript;
+- HTML semântico entregue estaticamente;
+- TypeScript mínimo para links, atribuição e analytics;
 - Vite;
 - CSS nativo;
-- `lucide-react` para ícones;
 - hospedagem estática/SPA compatível com Vercel.
 
-Outra LLM pode usar stack equivalente, desde que o resultado seja estático, leve, acessível e cumpra os mesmos comportamentos.
+React e bibliotecas de ícones foram removidos do caminho de renderização após a auditoria PageSpeed de 2026-08-01. Outra LLM pode usar stack equivalente, mas o HTML principal deve chegar pronto no primeiro documento e o bundle inicial deve respeitar o orçamento desta spec.
 
 ### 17.2 Estrutura mínima de referência
 
@@ -819,12 +818,16 @@ clube-delas-landing-page-v2/
 │   └── 2026-07-31-clube-delas-landing-v2-design.md
 ├── public/
 │   ├── fonts/inter-latin.woff2
+│   ├── llms.txt
+│   ├── logo-clube-delas-96.webp
+│   ├── logo-clube-delas-192.webp
 │   ├── logo-clube-delas.webp
-│   └── logo-clube-delas.png
+│   ├── logo-clube-delas.png
+│   ├── robots.txt
+│   └── sitemap.xml
 ├── src/
-│   ├── App.tsx
 │   ├── config.ts
-│   ├── main.tsx
+│   ├── main.ts
 │   ├── styles.css
 │   └── vite-env.d.ts
 ├── index.html
@@ -863,7 +866,9 @@ Assets da implementação atual:
 
 | Arquivo | Formato | Tamanho aproximado | Uso |
 |---|---|---:|---|
-| `public/logo-clube-delas.webp` | WebP | 7,2 KB | logo crítica na interface |
+| `public/logo-clube-delas-96.webp` | WebP | 1,1 KB | logos pequenas e primeira dobra |
+| `public/logo-clube-delas-192.webp` | WebP | 3,0 KB | arte maior abaixo da dobra |
+| `public/logo-clube-delas.webp` | WebP | 7,2 KB | original WebP de referência |
 | `public/logo-clube-delas.png` | PNG | 37,4 KB | favicon e compartilhamento |
 | `public/fonts/inter-latin.woff2` | WOFF2 | 48,3 KB | fonte local da interface |
 
@@ -882,18 +887,22 @@ Regras:
 ### 19.1 Princípios
 
 - aplicação estática, sem chamada de API para renderizar o conteúdo inicial;
+- HTML principal pronto no documento, sem depender de React/hidratação;
 - fonte local com `font-display: swap`;
-- preload somente da fonte e da logo realmente críticas;
+- preload somente da logo realmente crítica;
 - HTML/CSS para ilustrações sempre que razoável;
-- JavaScript apenas para FAQ, seleção dos links e analytics;
+- FAQ com `details/summary` nativo, sem JavaScript;
+- JavaScript apenas para seleção dos links, atribuição e analytics;
 - CSS e JavaScript minificados na produção;
-- scripts de terceiros assíncronos;
+- Meta Pixel com o mesmo ID oficial, enfileirado imediatamente e carregado após a primeira renderização ou na primeira interação;
+- scripts de terceiros assíncronos e fora do caminho crítico;
+- cache imutável de um ano para bundles, fontes e logos versionadas;
 - nada deve bloquear o CTA principal;
 - abaixo da dobra, usar otimizações que não criem flashes ou espaços vazios no mobile.
 
 ### 19.2 Orçamento obrigatório
 
-- JavaScript inicial: no máximo 75 KB gzip;
+- JavaScript inicial próprio: no máximo 10 KB gzip;
 - CSS inicial: no máximo 8 KB gzip;
 - logo crítica: no máximo 15 KB;
 - nenhuma imagem externa bloqueando o primeiro conteúdo;
@@ -903,16 +912,20 @@ Regras:
 
 ### 19.3 Baseline da implementação de referência
 
-Medições locais de 2026-08-01:
+O primeiro relatório público do PageSpeed, antes da otimização, marcou `76` em desempenho, `95` em acessibilidade, `100` em práticas recomendadas e `92` em SEO. As métricas mobile eram FCP `2,2 s`, LCP `4,2 s`, TBT `260 ms`, CLS `0` e Speed Index `4,3 s`.
 
-- JavaScript: aproximadamente `67,74 KB gzip`;
-- CSS: aproximadamente `5,51 KB gzip`;
-- DOMContentLoaded: `189 ms`;
-- load: `189 ms`;
-- First Paint: `164 ms`;
-- FCP: `612 ms` com CPU 4× mais lenta;
-- LCP: `612 ms` com CPU 4× mais lenta;
-- CLS: `0`.
+Após a otimização de 2026-08-01, a build local passou a ter:
+
+- HTML: aproximadamente `4,75 KB gzip`;
+- JavaScript próprio: aproximadamente `1,04 KB gzip`;
+- CSS: aproximadamente `5,54 KB gzip`;
+- redução de aproximadamente `98,5%` no JavaScript inicial;
+- Lighthouse mobile local: `99–100` em desempenho;
+- Lighthouse mobile local: `100` em acessibilidade, práticas recomendadas e SEO;
+- FCP: `1,2 s`;
+- LCP: `1,5 s`;
+- TBT: `0 ms`;
+- CLS: `0,001`.
 
 Essas medições são baseline local, não uma promessa de produção e não substituem PageSpeed Insights no domínio publicado.
 
