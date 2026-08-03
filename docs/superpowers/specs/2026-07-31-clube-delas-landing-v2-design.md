@@ -715,6 +715,8 @@ No carregamento:
 - `PageView`;
 - `ViewContent`.
 
+Os dois eventos devem ser enviados assim que o JavaScript próprio executar, usando o endpoint leve oficial `facebook.com/tr` e o mesmo ID do Pixel. Eles não devem depender do download do `fbevents.js`. A biblioteca completa fica reservada para `Lead`/interação e pode ser carregada posteriormente, sem atrasar o registro de `PageView` e `ViewContent`.
+
 Em cada CTA:
 
 - evento `Lead`;
@@ -894,7 +896,8 @@ Regras:
 - FAQ com `details/summary` nativo, sem JavaScript;
 - JavaScript apenas para seleção dos links, atribuição e analytics;
 - CSS e JavaScript minificados na produção;
-- Meta Pixel com o mesmo ID oficial, enfileirado imediatamente e carregado após a primeira renderização ou na primeira interação;
+- `PageView` e `ViewContent` enviados imediatamente pelo endpoint leve do mesmo Meta Pixel, sem aguardar a biblioteca completa;
+- biblioteca `fbevents.js` assíncrona, carregada na primeira interação ou após o caminho crítico, para processar `Lead` sem competir com a renderização;
 - scripts de terceiros assíncronos e fora do caminho crítico;
 - cache imutável de um ano para bundles, fontes e logos versionadas;
 - nada deve bloquear o CTA principal;

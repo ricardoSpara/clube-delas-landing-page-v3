@@ -36,8 +36,22 @@ function installPixelQueue() {
   window._fbq = window._fbq ?? pixel
 
   pixel('init', META_PIXEL_ID)
-  pixel('track', 'PageView')
-  pixel('track', 'ViewContent')
+}
+
+function sendLightweightPixelEvent(eventName: 'PageView' | 'ViewContent') {
+  const endpoint = new URL('https://www.facebook.com/tr/')
+  endpoint.search = new URLSearchParams({
+    id: META_PIXEL_ID,
+    ev: eventName,
+    dl: window.location.href,
+    rl: document.referrer,
+    ts: Date.now().toString(),
+    noscript: '1',
+  }).toString()
+
+  const beacon = new Image(1, 1)
+  beacon.alt = ''
+  beacon.src = endpoint.toString()
 }
 
 function loadMetaPixel() {
@@ -57,9 +71,11 @@ function trackLead(placement: string, platform: 'whatsapp' | 'telegram') {
 }
 
 installPixelQueue()
+sendLightweightPixelEvent('PageView')
+sendLightweightPixelEvent('ViewContent')
 
-// Mantém PageView/ViewContent e Lead no mesmo Pixel, sem deixar o script de
-// terceiros competir com o conteúdo principal durante a primeira renderização.
+// Os eventos de entrada usam o endpoint leve oficial. A biblioteca completa só
+// entra quando necessária para Lead/interação e não bloqueia a renderização.
 window.setTimeout(loadMetaPixel, 8_000)
 document.addEventListener('pointerdown', loadMetaPixel, { once: true, passive: true })
 document.addEventListener('keydown', loadMetaPixel, { once: true })

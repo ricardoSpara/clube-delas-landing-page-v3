@@ -17,7 +17,7 @@ npm run build
 npm run preview
 ```
 
-Os seis destinos de WhatsApp, o Telegram e a prova social ficam centralizados em `src/config.ts`. O conteúdo inicial é HTML estático; o JavaScript é usado somente para distribuir os links, preservar atribuição e carregar o Meta Pixel sem bloquear a primeira renderização.
+Os seis destinos de WhatsApp, o Telegram e a prova social ficam centralizados em `src/config.ts`. O conteúdo inicial é HTML estático; o JavaScript é usado somente para distribuir os links, preservar atribuição e analytics. `PageView` e `ViewContent` são enviados imediatamente pelo endpoint leve oficial do Meta Pixel; a biblioteca completa fica fora da renderização inicial e é antecipada em qualquer interação.
 
 ## Desempenho de referência
 
