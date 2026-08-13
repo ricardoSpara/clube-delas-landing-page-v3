@@ -58,3 +58,13 @@ test('defines mobile-first CTA, sticky, responsive, and reduced-motion rules', (
   assert.match(css, /safe-area-inset-bottom/)
   assert.match(css, /overflow-x:\s*hidden/)
 })
+
+test('implements observer-driven sticky behavior and tracks every placement', () => {
+  assert.match(main, /function setupStickyCta\(\)/)
+  assert.match(main, /IntersectionObserver/)
+  assert.match(main, /data-hero-cta/)
+  assert.match(main, /data-sticky-cta/)
+  for (const placement of ['hero', 'final', 'mobile_sticky', 'telegram_hero']) {
+    assert.match(html, new RegExp(`data-placement="${placement}"`))
+  }
+})

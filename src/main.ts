@@ -70,9 +70,29 @@ function trackLead(placement: string, platform: 'whatsapp' | 'telegram') {
   window.dataLayer.push({ event: 'generate_lead', placement, platform })
 }
 
+function setupStickyCta() {
+  const heroCta = document.querySelector<HTMLElement>('[data-hero-cta]')
+  const stickyCta = document.querySelector<HTMLElement>('[data-sticky-cta]')
+  if (!heroCta || !stickyCta || !('IntersectionObserver' in window)) return
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry) return
+
+      const shouldShow = !entry.isIntersecting && entry.boundingClientRect.bottom < 0
+      stickyCta.classList.toggle('is-visible', shouldShow)
+      stickyCta.setAttribute('aria-hidden', String(!shouldShow))
+    },
+    { threshold: 0.25 },
+  )
+
+  observer.observe(heroCta)
+}
+
 installPixelQueue()
 sendLightweightPixelEvent('PageView')
 sendLightweightPixelEvent('ViewContent')
+setupStickyCta()
 
 // Os eventos de entrada usam o endpoint leve oficial. A biblioteca completa só
 // entra quando necessária para Lead/interação e não bloqueia a renderização.
