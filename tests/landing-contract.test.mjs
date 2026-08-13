@@ -50,20 +50,20 @@ test('declares sticky CTA hooks and mobile-safe image dimensions', () => {
   }
 })
 
-test('keeps the mobile hero clear of Safari chrome with intentional headline lines', () => {
-  assert.match(css, /h1\s*\{\s*font-size:\s*clamp\(32px,\s*10vw,\s*48px\)/)
-  assert.match(css, /@media\s*\(max-width:\s*767px\)[\s\S]*?min-height:\s*calc\(100svh - 96px\)/)
-  assert.match(css, /\.headline-line\s*\{\s*display:\s*block;\s*white-space:\s*nowrap/)
-  assert.match(css, /@media\s*\(max-height:\s*650px\)[\s\S]*?min-height:\s*calc\(100svh - 84px\)/)
-  assert.match(css, /@media\s*\(min-width:\s*768px\)\s*and\s*\(max-width:\s*899px\)[\s\S]*?\.headline-line\s*\{\s*display:\s*block/)
+test('uses a content-driven sans-serif mobile hero', () => {
+  assert.doesNotMatch(css, /100(?:s|d|l)?vh/)
+  assert.doesNotMatch(css, /white-space:\s*nowrap/)
+  assert.match(css, /h1,\s*h2\s*\{[^}]*font-family:\s*inherit/s)
+  assert.match(css, /\.hero-logo\s*\{/)
+  assert.match(css, /\.cta\s*\{[^}]*min-height:\s*60px/s)
+  assert.match(css, /@media\s*\(max-width:\s*359px\)/)
 })
 
 test('defines mobile-first CTA, sticky, responsive, and reduced-motion rules', () => {
   assert.match(css, /\.cta-primary\s*\{/)
   assert.match(css, /\.mobile-sticky\.is-visible/)
   assert.match(css, /@media\s*\(min-width:\s*768px\)/)
-  assert.match(css, /@media\s*\(max-height:\s*650px\)/)
-  assert.match(css, /@media\s*\(min-width:\s*768px\)\s*and\s*\(max-height:\s*720px\)/)
+  assert.match(css, /@media\s*\(max-width:\s*359px\)/)
   assert.match(css, /prefers-reduced-motion:\s*reduce/)
   assert.match(css, /safe-area-inset-bottom/)
   assert.match(css, /overflow-x:\s*hidden/)
