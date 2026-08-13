@@ -1,6 +1,6 @@
 # Clube Delas Promo — Landing Page
 
-Landing V4 mobile-first inspirada na hierarquia compacta da versão de maior conversão. O WhatsApp é a ação principal e o Telegram permanece como alternativa secundária.
+Landing V5 mobile-first de conversão direta. O WhatsApp é a ação principal e o Telegram permanece como alternativa secundária. O hero não repete a logo: começa pela oferta, pela prova social real e pelo CTA.
 
 ## Executar
 
@@ -22,19 +22,16 @@ Os seis destinos de WhatsApp e o Telegram ficam centralizados em `src/config.ts`
 
 O WhatsApp é o CTA principal nos placements `hero`, `final` e `mobile_sticky`. O Telegram é uma alternativa secundária em `telegram_hero`. Todos enviam `Lead` para o mesmo Pixel `915964627618020` e `generate_lead` para o `dataLayer`.
 
-## Desempenho de referência
+## Orçamento de desempenho
 
-- HTML: `2,23 KB gzip`
-- JavaScript próprio: `1,30 KB gzip`
-- CSS: `2,21 KB gzip`
-- Logo crítica: `1,14 KB`
-- Lighthouse mobile local: `100` em desempenho, acessibilidade, práticas recomendadas e SEO
-- FCP: `1,0 s`
-- LCP: `1,3 s`
-- TBT: `0 ms`
-- CLS: `0`
-- Speed Index: `1,0 s`
+- HTML até `10 KB gzip`
+- JavaScript próprio até `2 KB gzip`
+- CSS até `3,5 KB gzip`
+- zero JavaScript de framework e zero fonte externa
+- CLS alvo menor que `0,02`, TBT menor que `50 ms` e LCP menor que `1,8 s` no Lighthouse mobile simulado
 
-A composição foi inspecionada em `320 × 568`, `360 × 800`, `375 × 667`, `390 × 844`, `393 × 795`, `430 × 932`, `768 × 1024` e `1440 × 900`, sem overflow horizontal ou texto cortado. O CTA principal cabe integralmente em `320 × 568`, e o Telegram aparece completo a partir de `375 × 667`.
+Na validação local da V5, o build gerou HTML de `2,53 KB gzip`, CSS de `2,86 KB gzip` e JavaScript próprio de `1,30 KB gzip`. O Lighthouse mobile local marcou `100` em desempenho, acessibilidade, práticas recomendadas e SEO; FCP `1,0 s`, LCP `1,3 s`, TBT `0 ms` e CLS `0`.
 
-A especificação completa e os critérios de aceite estão em `docs/superpowers/specs/2026-08-13-clube-delas-tested-mobile-v4-design.md`.
+A composição deve ser inspecionada em `320 × 568`, `360 × 800`, `375 × 667`, `390 × 844`, `393 × 795`, `430 × 932`, `768 × 1024` e `1440 × 900`, sem overflow horizontal ou texto cortado.
+
+A especificação completa e os critérios de aceite estão em `docs/superpowers/specs/2026-08-13-clube-delas-direct-conversion-v5-design.md`.

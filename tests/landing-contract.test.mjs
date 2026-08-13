@@ -8,13 +8,13 @@ const config = await readFile(new URL('src/config.ts', root), 'utf8')
 const main = await readFile(new URL('src/main.ts', root), 'utf8')
 const css = await readFile(new URL('src/styles.css', root), 'utf8')
 
-test('uses the approved compact V4 promise and hierarchy', () => {
-  assert.match(html, /Achadinhos Femininos de até[\s\S]*80% OFF[\s\S]*no seu WhatsApp/)
-  assert.match(html, /80 mil\+[\s\S]{0,80}pessoas já fazem parte/)
-  assert.match(html, /QUERO ENTRAR GRÁTIS NO WHATSAPP/)
-  assert.match(html, /Grátis[\s\S]*Sem compra obrigatória[\s\S]*Saia quando quiser/)
-  assert.match(html, /class="hero-logo"/)
-  assert.doesNotMatch(html, /urgency-strip|eyebrow|hero-accent/)
+test('presents the new direct offer promise without a central logo', () => {
+  assert.match(html, /Até <em>80% OFF<\/em>[\s\S]*Antes que o preço mude\./)
+  assert.match(html, /class="hero-kicker"/)
+  assert.match(html, /80 mil\+[\s\S]{0,120}(pessoas|na comunidade)/)
+  assert.match(html, /QUERO RECEBER AS OFERTAS NO WHATSAPP/)
+  assert.match(html, /Entrar é grátis[\s\S]*sem formulário/)
+  assert.equal((html.match(/<img\b[^>]*logo-clube-delas-96\.webp/g) ?? []).length, 1)
 })
 
 test('keeps WhatsApp dominant and Telegram secondary', () => {
@@ -54,7 +54,8 @@ test('uses a content-driven sans-serif mobile hero', () => {
   assert.doesNotMatch(css, /100(?:s|d|l)?vh/)
   assert.doesNotMatch(css, /white-space:\s*nowrap/)
   assert.match(css, /h1,\s*h2\s*\{[^}]*font-family:\s*inherit/s)
-  assert.match(css, /\.hero-logo\s*\{/)
+  assert.match(css, /\.hero-kicker\s*\{/)
+  assert.match(css, /\.offer-panel\s*\{/)
   assert.match(css, /\.cta\s*\{[^}]*min-height:\s*60px/s)
   assert.match(css, /@media\s*\(max-width:\s*359px\)/)
 })
