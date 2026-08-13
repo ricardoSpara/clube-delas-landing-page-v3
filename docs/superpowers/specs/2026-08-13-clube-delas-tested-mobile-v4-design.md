@@ -1,7 +1,7 @@
 # Clube Delas Promo — Landing V4 inspirada na versão de maior conversão
 
-Data: 13 de agosto de 2026  
-Status: design aprovado; implementação pendente  
+Data: 13 de agosto de 2026
+Status: implementada e validada localmente
 Branch de trabalho: `codex/mobile-conversion-v4`
 
 ## 1. Objetivo
@@ -431,3 +431,27 @@ A V4 estará pronta quando:
 ## 19. Prompt autossuficiente para outra LLM/agente
 
 > Crie uma landing page nova para o Clube Delas Promo seguindo integralmente esta especificação. O objetivo é maximizar entradas nos grupos de WhatsApp; Telegram é obrigatório, porém secundário. Use como direção visual uma landing mobile compacta de convite para grupo: cabeçalho branco curto, logo central, prova real de 80 mil+ pessoas, headline sem serifa “Achadinhos Femininos de até 80% OFF no seu WhatsApp”, CTA rosa dominante e redução imediata de risco. Não use contador, vagas restantes, avaliações, depoimentos ou números não comprovados. Preserve exatamente os seis links de WhatsApp, o Telegram, o Pixel 915964627618020, os eventos PageView/ViewContent/Lead e a preservação de utm_* e fbclid. Implemente com HTML estático, CSS próprio e o mínimo de TypeScript, sem React ou recursos externos bloqueantes. O hero mobile deve ter altura definida pelo conteúdo, nunca 100vh, e deve ser validado visualmente em todos os viewports descritos antes da publicação.
+
+## 20. Resultado da implementação de referência
+
+Validação local concluída em 13 de agosto de 2026:
+
+- oito testes de contrato aprovados;
+- lint aprovado;
+- build de produção aprovado;
+- HTML: `2,23 KB gzip`;
+- CSS: `2,21 KB gzip`;
+- JavaScript próprio: `1,30 KB gzip`;
+- logo crítica: `1,14 KB`;
+- Lighthouse mobile: `100` em desempenho, acessibilidade, práticas recomendadas e SEO;
+- FCP: `1,0 s`;
+- LCP: `1,3 s`;
+- TBT: `0 ms`;
+- CLS: `0`;
+- Speed Index: `1,0 s`;
+- ausência de overflow nos oito viewports obrigatórios;
+- CTA principal completo em `320 × 568`;
+- Telegram completo a partir de `375 × 667`;
+- `PageView` e `ViewContent` retornando HTTP 200;
+- `Lead` validado com `content_name`, plataforma e placement corretos;
+- CTA persistente corrigido e validado após a saída completa do CTA do hero.

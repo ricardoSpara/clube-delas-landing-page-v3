@@ -1,6 +1,6 @@
 # Clube Delas Promo — Landing Page
 
-Landing page mobile-first focada em conversão para os grupos do Clube Delas Promo no WhatsApp e Telegram.
+Landing V4 mobile-first inspirada na hierarquia compacta da versão de maior conversão. O WhatsApp é a ação principal e o Telegram permanece como alternativa secundária.
 
 ## Executar
 
@@ -24,14 +24,17 @@ O WhatsApp é o CTA principal nos placements `hero`, `final` e `mobile_sticky`. 
 
 ## Desempenho de referência
 
-- HTML: `2,46 KB gzip`
+- HTML: `2,23 KB gzip`
 - JavaScript próprio: `1,30 KB gzip`
-- CSS: `2,39 KB gzip`
+- CSS: `2,21 KB gzip`
 - Logo crítica: `1,14 KB`
 - Lighthouse mobile local: `100` em desempenho, acessibilidade, práticas recomendadas e SEO
-- FCP: `0,9 s`
+- FCP: `1,0 s`
 - LCP: `1,3 s`
 - TBT: `0 ms`
 - CLS: `0`
+- Speed Index: `1,0 s`
 
-A especificação completa e os critérios de aceite estão em `docs/superpowers/specs/2026-08-13-clube-delas-direct-conversion-v3-design.md`.
+A composição foi inspecionada em `320 × 568`, `360 × 800`, `375 × 667`, `390 × 844`, `393 × 795`, `430 × 932`, `768 × 1024` e `1440 × 900`, sem overflow horizontal ou texto cortado. O CTA principal cabe integralmente em `320 × 568`, e o Telegram aparece completo a partir de `375 × 667`.
+
+A especificação completa e os critérios de aceite estão em `docs/superpowers/specs/2026-08-13-clube-delas-tested-mobile-v4-design.md`.
