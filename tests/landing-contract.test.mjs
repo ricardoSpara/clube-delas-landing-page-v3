@@ -38,6 +38,7 @@ test('preserves all destinations and analytics identity', () => {
   assert.match(main, /PageView/)
   assert.match(main, /ViewContent/)
   assert.match(main, /'Lead'/)
+  assert.match(main, /pixel\.loaded = true/)
 })
 
 test('declares sticky CTA hooks and mobile-safe image dimensions', () => {
@@ -54,6 +55,7 @@ test('defines mobile-first CTA, sticky, responsive, and reduced-motion rules', (
   assert.match(css, /\.mobile-sticky\.is-visible/)
   assert.match(css, /@media\s*\(min-width:\s*768px\)/)
   assert.match(css, /@media\s*\(max-height:\s*650px\)/)
+  assert.match(css, /@media\s*\(min-width:\s*768px\)\s*and\s*\(max-height:\s*720px\)/)
   assert.match(css, /prefers-reduced-motion:\s*reduce/)
   assert.match(css, /safe-area-inset-bottom/)
   assert.match(css, /overflow-x:\s*hidden/)

@@ -29,7 +29,7 @@ function installPixelQueue() {
     else queue.push(args)
   }) as PixelFunction
   pixel.push = pixel
-  pixel.loaded = false
+  pixel.loaded = true
   pixel.version = '2.0'
   pixel.queue = queue
   window.fbq = pixel
