@@ -8,12 +8,14 @@ const config = await readFile(new URL('src/config.ts', root), 'utf8')
 const main = await readFile(new URL('src/main.ts', root), 'utf8')
 const css = await readFile(new URL('src/styles.css', root), 'utf8')
 
-test('presents the new direct offer promise without a central logo', () => {
-  assert.match(html, /Até <em>80% OFF<\/em>[\s\S]*Antes que o preço mude\./)
-  assert.match(html, /class="hero-kicker"/)
-  assert.match(html, /80 mil\+[\s\S]{0,120}(pessoas|na comunidade)/)
-  assert.match(html, /QUERO RECEBER AS OFERTAS NO WHATSAPP/)
-  assert.match(html, /Entrar é grátis[\s\S]*sem formulário/)
+test('presents a compact group invitation with real benefits', () => {
+  assert.match(html, /class="hero-medallion"/)
+  assert.match(html, /Entre no Clube Delas e receba achadinhos no WhatsApp\./)
+  assert.match(html, /Ofertas selecionadas em um só lugar/)
+  assert.match(html, /Cupons e alertas rápidos/)
+  assert.match(html, /Até 80% OFF no que você ama/)
+  assert.match(html, /QUERO ENTRAR NO GRUPO GRÁTIS/)
+  assert.match(html, /É grátis,[\s\S]*sair quando quiser/)
   assert.equal((html.match(/<img\b[^>]*logo-clube-delas-96\.webp/g) ?? []).length, 1)
 })
 
@@ -26,7 +28,7 @@ test('keeps WhatsApp dominant and Telegram secondary', () => {
 })
 
 test('uses only verified proof and community benefits', () => {
-  assert.match(html, /Todo mês tem sorteio\. E mais de uma ganhadora\./)
+  assert.match(html, /Todo mês tem sorteio,[\s\S]*mais de uma ganhadora/)
   assert.match(html, /lives/)
   assert.doesNotMatch(html, /restam|últimas? vagas?|expira em|countdown|avaliações|23\.157/i)
 })
@@ -54,8 +56,8 @@ test('uses a content-driven sans-serif mobile hero', () => {
   assert.doesNotMatch(css, /100(?:s|d|l)?vh/)
   assert.doesNotMatch(css, /white-space:\s*nowrap/)
   assert.match(css, /h1,\s*h2\s*\{[^}]*font-family:\s*inherit/s)
-  assert.match(css, /\.hero-kicker\s*\{/)
-  assert.match(css, /\.offer-panel\s*\{/)
+  assert.match(css, /\.hero-medallion\s*\{/)
+  assert.match(css, /\.reason-list\s*\{/)
   assert.match(css, /\.cta\s*\{[^}]*min-height:\s*60px/s)
   assert.match(css, /@media\s*\(max-width:\s*359px\)/)
 })
