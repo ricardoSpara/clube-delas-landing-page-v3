@@ -8,27 +8,27 @@ const config = await readFile(new URL('src/config.ts', root), 'utf8')
 const main = await readFile(new URL('src/main.ts', root), 'utf8')
 const css = await readFile(new URL('src/styles.css', root), 'utf8')
 
-test('puts the direct WhatsApp promise and primary CTA in the hero', () => {
-  assert.match(html, /Até <em>80% OFF<\/em><\/span>\s*<span class="headline-line">no que você ama<\/span>/)
-  assert.match(html, /direto no seu<\/span>\s*<span class="headline-line">WhatsApp/)
-  assert.match(html, /<strong>80 mil\+ pessoas<\/strong> já fazem parte/)
-  assert.match(html, /ENTRAR GRÁTIS NO GRUPO AGORA/)
-  assert.match(html, /data-platform="whatsapp" data-placement="hero"/)
+test('uses the approved compact V4 promise and hierarchy', () => {
+  assert.match(html, /Achadinhos Femininos de até[\s\S]*80% OFF[\s\S]*no seu WhatsApp/)
+  assert.match(html, /80 mil\+[\s\S]{0,80}pessoas já fazem parte/)
+  assert.match(html, /QUERO ENTRAR GRÁTIS NO WHATSAPP/)
+  assert.match(html, /Grátis[\s\S]*Sem compra obrigatória[\s\S]*Saia quando quiser/)
+  assert.match(html, /class="hero-logo"/)
+  assert.doesNotMatch(html, /urgency-strip|eyebrow|hero-accent/)
 })
 
-test('keeps Telegram secondary and conversion actions bounded', () => {
+test('keeps WhatsApp dominant and Telegram secondary', () => {
   assert.match(html, /Prefere Telegram\? Entrar por aqui/)
+  assert.match(html, /data-platform="whatsapp" data-placement="hero"/)
   assert.match(html, /data-platform="telegram" data-placement="telegram_hero"/)
   assert.equal((html.match(/data-platform="whatsapp"/g) ?? []).length, 3)
   assert.equal((html.match(/data-platform="telegram"/g) ?? []).length, 1)
 })
 
-test('uses only truthful urgency and verified community benefits', () => {
-  assert.match(html, /Promo boa muda rápido/)
-  assert.match(html, /Todo mês tem sorteio/)
-  assert.match(html, /mais de uma ganhadora/)
+test('uses only verified proof and community benefits', () => {
+  assert.match(html, /Todo mês tem sorteio\. E mais de uma ganhadora\./)
   assert.match(html, /lives/)
-  assert.doesNotMatch(html, /restam|últimas? vagas?|expira em|countdown|avaliações/i)
+  assert.doesNotMatch(html, /restam|últimas? vagas?|expira em|countdown|avaliações|23\.157/i)
 })
 
 test('preserves all destinations and analytics identity', () => {
@@ -51,7 +51,6 @@ test('declares sticky CTA hooks and mobile-safe image dimensions', () => {
 })
 
 test('keeps the mobile hero clear of Safari chrome with intentional headline lines', () => {
-  assert.equal((html.match(/class="headline-line"/g) ?? []).length, 4)
   assert.match(css, /h1\s*\{\s*font-size:\s*clamp\(32px,\s*10vw,\s*48px\)/)
   assert.match(css, /@media\s*\(max-width:\s*767px\)[\s\S]*?min-height:\s*calc\(100svh - 96px\)/)
   assert.match(css, /\.headline-line\s*\{\s*display:\s*block;\s*white-space:\s*nowrap/)
