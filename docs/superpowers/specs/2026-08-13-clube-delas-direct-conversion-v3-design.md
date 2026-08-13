@@ -1,7 +1,7 @@
 # Clube Delas Promo — Landing V3 de Conversão Direta
 
 Data: 13 de agosto de 2026  
-Status: design aprovado; aguardando revisão final da especificação  
+Status: implementada e validada localmente
 Branch: `feat/direct-conversion-landing`
 
 ## 1. Objetivo
@@ -408,3 +408,47 @@ Não alterar simultaneamente anúncios, público e landing durante o período de
 - depoimentos sem comprovação;
 - integração nova com CRM;
 - alteração dos grupos ou do Pixel.
+
+## 18. Implementação e validação
+
+Implementação concluída em 13 de agosto de 2026 na branch `feat/direct-conversion-landing`.
+
+### Estrutura entregue
+
+- WhatsApp como CTA dominante no hero, fechamento e barra persistente mobile;
+- Telegram como único link secundário;
+- escolha aleatória preservada entre os seis destinos de WhatsApp;
+- `utm_*` e `fbclid` preservados;
+- Pixel `915964627618020` preservado com `PageView`, `ViewContent` e `Lead`;
+- fila do Pixel alinhada ao snippet oficial com estado `loaded = true`;
+- CTA persistente controlado por `IntersectionObserver` sem biblioteca externa;
+- nenhuma escassez, depoimento ou avaliação inventada.
+
+### Viewports verificados
+
+- `320 × 568`;
+- `360 × 800`;
+- `390 × 844`;
+- `768 × 1024`;
+- `1440 × 900`;
+- `1280 × 633` como cenário desktop de altura compacta.
+
+Os testes confirmaram CTA inicial totalmente visível em `320 × 568`, ausência de overflow horizontal, ativação correta do CTA persistente, destinos válidos e ausência de erros no navegador.
+
+### Resultado técnico local
+
+- 7 testes de contrato aprovados;
+- lint aprovado;
+- build de produção aprovado;
+- HTML: `2,46 KB gzip`;
+- CSS: `2,39 KB gzip`;
+- JavaScript próprio: `1,30 KB gzip`;
+- logo crítica: `1,14 KB`;
+- Lighthouse mobile: `100` em desempenho, acessibilidade, práticas recomendadas e SEO;
+- FCP: `0,9 s`;
+- LCP: `1,3 s`;
+- TBT: `0 ms`;
+- CLS: `0`;
+- Speed Index: `2,0 s`.
+
+Os beacons leves de `PageView` e `ViewContent` retornaram HTTP 200 durante a verificação. O clique de WhatsApp registrou corretamente `generate_lead`, `platform` e `placement`; a fila do `Lead` foi consumida após o carregamento assíncrono da biblioteca da Meta.
