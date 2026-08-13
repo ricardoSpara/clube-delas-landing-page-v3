@@ -83,7 +83,7 @@ function setupStickyCta() {
       stickyCta.classList.toggle('is-visible', shouldShow)
       stickyCta.setAttribute('aria-hidden', String(!shouldShow))
     },
-    { threshold: 0.25 },
+    { threshold: [0, 0.25] },
   )
 
   observer.observe(heroCta)
