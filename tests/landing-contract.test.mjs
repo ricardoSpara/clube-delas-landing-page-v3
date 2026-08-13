@@ -6,6 +6,7 @@ const root = new URL('../', import.meta.url)
 const html = await readFile(new URL('index.html', root), 'utf8')
 const config = await readFile(new URL('src/config.ts', root), 'utf8')
 const main = await readFile(new URL('src/main.ts', root), 'utf8')
+const css = await readFile(new URL('src/styles.css', root), 'utf8')
 
 test('puts the direct WhatsApp promise and primary CTA in the hero', () => {
   assert.match(html, /Até\s+<em>80% OFF<\/em>\s+no que você ama/)
@@ -46,4 +47,14 @@ test('declares sticky CTA hooks and mobile-safe image dimensions', () => {
     assert.match(image[0], /\bwidth="\d+"/)
     assert.match(image[0], /\bheight="\d+"/)
   }
+})
+
+test('defines mobile-first CTA, sticky, responsive, and reduced-motion rules', () => {
+  assert.match(css, /\.cta-primary\s*\{/)
+  assert.match(css, /\.mobile-sticky\.is-visible/)
+  assert.match(css, /@media\s*\(min-width:\s*768px\)/)
+  assert.match(css, /@media\s*\(max-height:\s*650px\)/)
+  assert.match(css, /prefers-reduced-motion:\s*reduce/)
+  assert.match(css, /safe-area-inset-bottom/)
+  assert.match(css, /overflow-x:\s*hidden/)
 })
