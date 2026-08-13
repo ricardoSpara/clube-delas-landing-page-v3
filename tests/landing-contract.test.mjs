@@ -9,8 +9,8 @@ const main = await readFile(new URL('src/main.ts', root), 'utf8')
 const css = await readFile(new URL('src/styles.css', root), 'utf8')
 
 test('puts the direct WhatsApp promise and primary CTA in the hero', () => {
-  assert.match(html, /Até\s+<em>80% OFF<\/em>\s+no que você ama/)
-  assert.match(html, /direto no seu WhatsApp/)
+  assert.match(html, /Até <em>80% OFF<\/em><\/span>\s*<span class="headline-line">no que você ama<\/span>/)
+  assert.match(html, /direto no seu<\/span>\s*<span class="headline-line">WhatsApp/)
   assert.match(html, /<strong>80 mil\+ pessoas<\/strong> já fazem parte/)
   assert.match(html, /ENTRAR GRÁTIS NO GRUPO AGORA/)
   assert.match(html, /data-platform="whatsapp" data-placement="hero"/)
@@ -48,6 +48,15 @@ test('declares sticky CTA hooks and mobile-safe image dimensions', () => {
     assert.match(image[0], /\bwidth="\d+"/)
     assert.match(image[0], /\bheight="\d+"/)
   }
+})
+
+test('keeps the mobile hero clear of Safari chrome with intentional headline lines', () => {
+  assert.equal((html.match(/class="headline-line"/g) ?? []).length, 4)
+  assert.match(css, /h1\s*\{\s*font-size:\s*clamp\(32px,\s*10vw,\s*48px\)/)
+  assert.match(css, /@media\s*\(max-width:\s*767px\)[\s\S]*?min-height:\s*calc\(100svh - 96px\)/)
+  assert.match(css, /\.headline-line\s*\{\s*display:\s*block;\s*white-space:\s*nowrap/)
+  assert.match(css, /@media\s*\(max-height:\s*650px\)[\s\S]*?min-height:\s*calc\(100svh - 84px\)/)
+  assert.match(css, /@media\s*\(min-width:\s*768px\)\s*and\s*\(max-width:\s*899px\)[\s\S]*?\.headline-line\s*\{\s*display:\s*block/)
 })
 
 test('defines mobile-first CTA, sticky, responsive, and reduced-motion rules', () => {
