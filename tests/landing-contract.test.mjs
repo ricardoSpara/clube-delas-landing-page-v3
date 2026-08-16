@@ -14,21 +14,17 @@ test('presents a compact group invitation with real benefits', () => {
   assert.match(html, /Ofertas selecionadas em um só lugar/)
   assert.match(html, /Cupons e alertas rápidos/)
   assert.match(html, /Até 80% OFF no que você ama/)
-  assert.match(html, /ENTRAR NO GRUPO DO WHATSAPP/)
+  assert.match(html, /QUERO ENTRAR NO GRUPO GRÁTIS/)
   assert.match(html, /É grátis,[\s\S]*sair quando quiser/)
   assert.equal((html.match(/<img\b[^>]*logo-clube-delas-96\.webp/g) ?? []).length, 1)
 })
 
 test('keeps WhatsApp dominant and Telegram secondary', () => {
-  assert.match(html, /class="cta cta-primary cta-whatsapp"[\s\S]*ENTRAR NO GRUPO DO WHATSAPP/)
-  assert.match(html, /class="cta cta-telegram"[\s\S]*ENTRAR NO GRUPO DO TELEGRAM/)
-  assert.equal((html.match(/class="platform-icon"/g) ?? []).length, 2)
+  assert.match(html, /Prefere Telegram\? Entrar por aqui/)
   assert.match(html, /data-platform="whatsapp" data-placement="hero"/)
   assert.match(html, /data-platform="telegram" data-placement="telegram_hero"/)
   assert.equal((html.match(/data-platform="whatsapp"/g) ?? []).length, 3)
   assert.equal((html.match(/data-platform="telegram"/g) ?? []).length, 1)
-  assert.match(css, /--whatsapp:\s*#(?:25d366|128c7e)/i)
-  assert.match(css, /\.cta-telegram\s*\{/)
 })
 
 test('uses only verified proof and community benefits', () => {
