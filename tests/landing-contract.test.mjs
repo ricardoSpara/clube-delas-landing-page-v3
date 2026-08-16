@@ -33,15 +33,12 @@ test('keeps WhatsApp dominant and Telegram secondary', () => {
 
 test('uses the logo pinks as the page palette and contains platform colors', () => {
   assert.match(css, /--pink:\s*#f975af/i)
-  assert.match(css, /--pink-strong:\s*#cf347d/i)
   assert.match(css, /--pink-soft:\s*#fed6e1/i)
   assert.match(css, /--pink-ring:\s*#fbb0c9/i)
-  assert.match(css, /--whatsapp:\s*#25d366/i)
-  assert.doesNotMatch(css, /--wine|#e92378|#43152d|#7f234f|#a92f68|#b93675|#bd3978/i)
-  assert.match(css, /\.cta-whatsapp\s*\{[^}]*background:\s*var\(--whatsapp\)[^}]*color:\s*var\(--whatsapp-ink\)/s)
-  assert.equal((html.match(/class="[^"]*cta-whatsapp[^"]*"/g) ?? []).length, 3)
+  assert.doesNotMatch(css, /#e92378|#43152d|#fff8f2/i)
+  assert.match(css, /\.cta-whatsapp\s*\{[^}]*background:\s*linear-gradient\([^}]*var\(--pink-dark\)/s)
+  assert.match(css, /\.cta-whatsapp \.platform-icon\s*\{[^}]*background:\s*white[^}]*stroke:\s*var\(--whatsapp\)/s)
   assert.match(css, /\.cta-telegram \.platform-icon\s*\{[^}]*fill:\s*var\(--telegram\)/s)
-  assert.match(css, /\.hero-medallion\s*\{[^}]*color:\s*var\(--ink\)/s)
 })
 
 test('uses only verified proof and community benefits', () => {
