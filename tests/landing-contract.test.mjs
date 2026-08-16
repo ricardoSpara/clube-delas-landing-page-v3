@@ -31,6 +31,16 @@ test('keeps WhatsApp dominant and Telegram secondary', () => {
   assert.match(css, /\.cta-telegram\s*\{/)
 })
 
+test('uses the logo pinks as the page palette and contains platform colors', () => {
+  assert.match(css, /--pink:\s*#f975af/i)
+  assert.match(css, /--pink-soft:\s*#fed6e1/i)
+  assert.match(css, /--pink-ring:\s*#fbb0c9/i)
+  assert.doesNotMatch(css, /#e92378|#43152d|#fff8f2/i)
+  assert.match(css, /\.cta-whatsapp\s*\{[^}]*background:\s*linear-gradient\([^}]*var\(--pink-dark\)/s)
+  assert.match(css, /\.cta-whatsapp \.platform-icon\s*\{[^}]*background:\s*white[^}]*stroke:\s*var\(--whatsapp\)/s)
+  assert.match(css, /\.cta-telegram \.platform-icon\s*\{[^}]*fill:\s*var\(--telegram\)/s)
+})
+
 test('uses only verified proof and community benefits', () => {
   assert.match(html, /Todo mês tem sorteio,[\s\S]*mais de uma ganhadora/)
   assert.match(html, /lives/)
