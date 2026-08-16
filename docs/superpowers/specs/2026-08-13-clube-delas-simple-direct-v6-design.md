@@ -9,10 +9,10 @@ Usar uma jornada vertical curta, inspirada na clareza da referência enviada: ex
 
 ## Direção visual
 
-- Paleta extraída da logo: rosa principal `#f975af`, rosa claro `#fed6e1` e aro rosa `#fbb0c9`. O tom `#a92f68` é a extensão acessível da marca para textos e botões com contraste; superfícies usam branco e rosa quase branco.
+- Paleta extraída da logo: rosa principal `#f975af`, rosa claro `#fed6e1` e aro rosa `#fbb0c9`. O rosa `#cf347d` é usado somente onde o contraste exige mais força; textos corridos usam neutros sem matiz vinho. Não existe roxo ou vinho na paleta geral.
 - A única logo real fica no cabeçalho. Para não repetir a marca no centro, o hero usa um selo de benefício com `OFERTAS DE ATÉ 80% OFF`.
 - Layout de uma única coluna, centralizado, sem painel lateral, carrossel, ilustração de celular, animação contínua ou distrações.
-- CTA principal arredondado em magenta acessível derivado da logo, com nome do WhatsApp e ícone verde em um pequeno disco branco. O Telegram aparece logo abaixo em branco rosado com borda da marca; apenas seu ícone usa azul. Assim, as cores das plataformas identificam os canais sem dominar a identidade da página.
+- Todos os CTAs de WhatsApp usam o verde oficial `#25d366`, com texto escuro para contraste. O Telegram aparece logo abaixo em branco rosado com borda da marca; apenas seu ícone usa azul. Fora dos canais, a interface usa somente a paleta rosa da logo e neutros.
 - O desktop preserva a mesma hierarquia em vez de criar uma composição desconectada do mobile.
 
 ## Copy e sequência do hero
