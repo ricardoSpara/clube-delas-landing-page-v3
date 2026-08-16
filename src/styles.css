@@ -9,6 +9,7 @@
   --muted: #705e67;
   --yellow: #ffd866;
   --telegram: #087ca7;
+  --whatsapp: #128c7e;
 }
 
 * { box-sizing: border-box; }
@@ -74,9 +75,14 @@ h1 { max-width: 510px; margin: 0 auto; font-size: clamp(30px, 8.4vw, 42px); font
 .social-proof strong { color: var(--wine); }
 .cta { min-height: 60px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; font-size: 13px; font-weight: 900; line-height: 1.14; text-align: center; text-decoration: none; }
 .cta-primary { width: 100%; background: linear-gradient(135deg, var(--pink), #c51661); color: white; box-shadow: 0 14px 29px rgba(216, 26, 109, .28); }
-.cta-primary > span:last-child { flex: 0 0 auto; font-size: 20px; line-height: 1; }
+.cta-arrow { flex: 0 0 auto; font-size: 20px; line-height: 1; }
+.channel-actions { display: grid; gap: 9px; }
+.cta-whatsapp { background: var(--whatsapp); box-shadow: 0 14px 29px rgba(18, 140, 126, .24); }
+.cta-telegram { width: calc(100% - 16px); min-height: 52px; margin: 0 auto; border: 2px solid rgba(8, 124, 167, .35); background: #edf9fd; color: #075985; box-shadow: 0 7px 18px rgba(8, 124, 167, .1); font-size: 12px; }
+.platform-icon { width: 22px; height: 22px; flex: 0 0 auto; fill: currentColor; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
+.cta-whatsapp .platform-icon { fill: none; stroke-width: 1.7; }
+.cta-telegram .platform-icon { width: 20px; height: 20px; stroke: none; }
 .cta-note { margin: 13px 0 0; color: var(--muted); font-size: 11px; line-height: 1.4; }
-.telegram-link { min-height: 44px; padding: 13px 8px 2px; display: inline-flex; align-items: center; color: var(--telegram); font-size: 12px; font-weight: 850; text-decoration: underline; text-underline-offset: 3px; }
 
 .benefits { padding: 37px 18px; background: var(--paper); }
 .section-heading { max-width: 540px; margin: 0 auto; text-align: center; }
@@ -99,7 +105,6 @@ footer p { max-width: 550px; margin: 5px auto 0; }
 .mobile-sticky.is-visible { transform: translateY(0); visibility: visible; pointer-events: auto; }
 .mobile-sticky .cta { min-height: 52px; }
 .cta:focus-visible,
-.telegram-link:focus-visible,
 .brand:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
 
 @media (max-width: 359px) {
@@ -120,8 +125,9 @@ footer p { max-width: 550px; margin: 5px auto 0; }
   .reason-list li > span { width: 25px; height: 25px; border-radius: 8px; font-size: 12px; }
   .social-proof { margin-bottom: 8px; padding: 6px 8px; font-size: 10px; }
   .cta { min-height: 55px; padding-inline: 12px; font-size: 11px; }
+  .cta-telegram { min-height: 48px; font-size: 10px; }
+  .platform-icon { width: 19px; height: 19px; }
   .cta-note { margin-top: 9px; font-size: 10px; }
-  .telegram-link { min-height: 39px; padding-top: 9px; font-size: 11px; }
   .benefits { padding: 30px 14px; }
   .section-heading h2 { font-size: 25px; }
   .section-heading > span { font-size: 12px; }
@@ -147,8 +153,9 @@ footer p { max-width: 550px; margin: 5px auto 0; }
   .reason-list li > span { width: 36px; height: 36px; }
   .social-proof { margin-bottom: 14px; font-size: 12px; }
   .cta-primary { width: min(100%, 500px); font-size: 15px; }
+  .channel-actions { justify-items: center; }
+  .cta-telegram { width: min(calc(100% - 24px), 468px); font-size: 13px; }
   .cta-note { font-size: 12px; }
-  .telegram-link { font-size: 13px; }
   .benefits { padding-block: 62px; }
   .section-heading h2 { font-size: 43px; }
   .section-heading > span { font-size: 15px; }

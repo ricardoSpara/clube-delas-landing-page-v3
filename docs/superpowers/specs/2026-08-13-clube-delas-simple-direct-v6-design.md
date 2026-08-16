@@ -12,7 +12,7 @@ Usar uma jornada vertical curta, inspirada na clareza da referência enviada: ex
 - Paleta original do Clube Delas: rosa `#e92378`, rosa escuro `#b9165b`, vinho `#43152d`, rosa claro `#ffd7e6` e fundo creme.
 - A única logo real fica no cabeçalho. Para não repetir a marca no centro, o hero usa um selo de benefício com `OFERTAS DE ATÉ 80% OFF`.
 - Layout de uma única coluna, centralizado, sem painel lateral, carrossel, ilustração de celular, animação contínua ou distrações.
-- CTA rosa arredondado e de largura total no mobile. WhatsApp é a única ação visualmente dominante; Telegram é link textual secundário.
+- CTA de WhatsApp verde, arredondado e de largura total no mobile, com nome e ícone da plataforma. O Telegram aparece logo abaixo como botão azul secundário, ligeiramente menor e também identificado por nome e ícone.
 - O desktop preserva a mesma hierarquia em vez de criar uma composição desconectada do mobile.
 
 ## Copy e sequência do hero
@@ -26,9 +26,9 @@ Usar uma jornada vertical curta, inspirada na clareza da referência enviada: ex
    - Cupons e alertas rápidos;
    - Até 80% OFF no que você ama.
 6. Prova social verdadeira: `80 mil+ pessoas já fazem parte`.
-7. CTA: `QUERO ENTRAR NO GRUPO GRÁTIS`.
-8. Redução de risco: entrada gratuita, saída quando quiser e aviso honesto de que promoções podem mudar.
-9. Telegram como alternativa.
+7. CTA principal: `ENTRAR NO GRUPO DO WHATSAPP`.
+8. CTA secundário: `ENTRAR NO GRUPO DO TELEGRAM`.
+9. Redução de risco: entrada gratuita, saída quando quiser e aviso honesto de que promoções podem mudar.
 
 ## Verdade e ética de conversão
 
@@ -50,6 +50,7 @@ Depois do hero, uma seção curta informa que existem sorteios mensais, mais de 
 ## Critérios de aceite
 
 - CTA do hero completo nos viewports `320×568`, `360×800`, `375×667`, `390×844`, `393×795`, `430×932`, `768×1024` e `1440×900`.
+- WhatsApp e Telegram aparecem como escolhas explícitas; o WhatsApp mantém maior peso visual e o Telegram não pode ser reduzido a um link textual discreto.
 - Sem overflow horizontal, texto cortado, erro de navegador ou logo central repetida.
 - `npm test`, `npm run lint` e `npm run build` aprovados.
 - Lighthouse mobile local: 100 em desempenho, acessibilidade, práticas recomendadas e SEO; FCP `0,9 s`, LCP `0,9 s`, TBT `0 ms` e CLS `0`.
