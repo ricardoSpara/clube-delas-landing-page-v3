@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-const META_PIXEL_ID = '915964627618020'
+const META_PIXEL_ID = '1656975519378017'
 let pixelRequested = false
 
 function installPixelQueue() {

@@ -36,7 +36,7 @@ test('uses only verified proof and community benefits', () => {
 test('preserves all destinations and analytics identity', () => {
   assert.equal((config.match(/clubedelaspromo-landing[1-6]/g) ?? []).length, 6)
   assert.match(config, /https:\/\/t\.me\/\+JslsL6UzXv43OGYx/)
-  assert.match(main, /915964627618020/)
+  assert.match(main, /1656975519378017/)
   assert.match(main, /PageView/)
   assert.match(main, /ViewContent/)
   assert.match(main, /'Lead'/)
