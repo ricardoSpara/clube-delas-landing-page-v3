@@ -1,4 +1,11 @@
-export const WHATSAPP_GROUPS = ['https://conectatribo.com.br/t/bM4x1M'] as const
+export const WHATSAPP_GROUPS = [
+  'https://tr.ee/clubedelaspromo-landing1',
+  'https://tr.ee/clubedelaspromo-landing2',
+  'https://tr.ee/clubedelaspromo-landing3',
+  'https://tr.ee/clubedelaspromo-landing4',
+  'https://tr.ee/clubedelaspromo-landing5',
+  'https://tr.ee/clubedelaspromo-landing6',
+] as const
 
 export const COMMUNITY_SIZE = '80 mil+' as const
 export const TELEGRAM_GROUP_URL = 'https://t.me/+JslsL6UzXv43OGYx' as const
